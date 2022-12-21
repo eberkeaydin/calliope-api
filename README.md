@@ -3,7 +3,7 @@
 #### Öncelikle pcnizde projeyi indireceğiniz bir klasör oluşturunuz. Klasör konumu dizini örneği: C:\users\eba\Desktop\calliope
 #### VsCode'a girip terminali açınız. CMD, Powershell, Bash vb terminaller de tercih edilebilir.
 #### cd komutu ile az önce yarattığınız dizine geliniz. ör: `cd \users\eba\Desktop\calliope`
-#### `git clone https://github.com/eberkeaydin/calliope-backend.git`  --> projeyi klonlayınız.
+#### `git clone https://github.com/eberkeaydin/calliope-api.git`  --> projeyi klonlayınız.
 #### İndirmenin ardından yaratılan projeyi VsCode'da açınız.
 
 
