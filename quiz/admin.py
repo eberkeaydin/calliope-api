@@ -28,13 +28,15 @@ class AnswerInlineModel(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
     fields = [
         'title',
-        'quiz'
+        'quiz',
+        'difficulty'
     ]
     
     list_display = [
         'title',
         'quiz',
-        'date_updated'
+        'date_updated',
+        'difficulty'
     ]
     
     inlines = [AnswerInlineModel,]

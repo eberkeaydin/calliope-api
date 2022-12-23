@@ -40,11 +40,9 @@ class Question(Updated):
         ordering = ['id']
         
     SCALE = (
-        (0, _('Fundamental')),
         (1, _('Beginner')),
         (2, _('Intermediate')),
-        (3, _('Advance')),
-        (4, _('Expert'))
+        (3, _('Advance'))
     )
     
     TYPE = (
@@ -78,6 +76,6 @@ class Answer(Updated):
     
     answer_text = models.CharField(max_length=255, verbose_name=_("Answer Text"))
     
-    is_right = models.BooleanField(default=False)
+    is_right = models.BooleanField(default=True)
 
 
