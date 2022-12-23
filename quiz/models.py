@@ -15,7 +15,7 @@ class Quizzes(models.Model):
         verbose_name_plural = _("Quizzes")
         ordering = ['id']
 
-    category = models.ForeignKey(Category, default=1, on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, default=1, on_delete=models.PROTECT)
     
     title = models.CharField(max_length=255, default=_("New Quiz"), verbose_name=_("Quiz Title"))
     
@@ -50,17 +50,17 @@ class Question(Updated):
     )
     
     
-    quiz = models.ForeignKey(Quizzes, related_name='question', on_delete=models.DO_NOTHING)
+    quiz = models.ForeignKey(Quizzes, related_name='question', on_delete=models.PROTECT)
     
     technique = models.IntegerField(choices=TYPE, default=0, verbose_name=_("Type of question"))
     
     title = models.CharField(max_length=255, verbose_name=_("Title"))
     
-    difficulty = models.IntegerField(choices=SCALE, default=0, verbose_name=_("Difficulty"))
+    difficulty = models.IntegerField(choices=SCALE, default=1, verbose_name=_("Difficulty"))
     
     date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
     
-    is_active = models.BooleanField(default=False, verbose_name=_("Active Status"))
+    is_active = models.BooleanField(default=True, verbose_name=_("Active Status"))
     
     def __str__(self):
         return self.title
@@ -72,7 +72,7 @@ class Answer(Updated):
         verbose_name_plural = _("Answers")
         ordering = ['id']
     
-    question = models.ForeignKey(Question, related_name='answer', on_delete=models.DO_NOTHING)
+    question = models.ForeignKey(Question, related_name='answer', on_delete=models.PROTECT)
     
     answer_text = models.CharField(max_length=255, verbose_name=_("Answer Text"))
     
