@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'quiz',
     'lesson',
     'rest_framework',
-    'reset_migrations'
 ]
 
 MIDDLEWARE = [
