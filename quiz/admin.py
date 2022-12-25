@@ -28,6 +28,7 @@ class AnswerInlineModel(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
     fields = [
         'title',
+        'question_text',
         'quiz',
         'difficulty'
     ]
@@ -35,6 +36,7 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display = [
         'title',
         'quiz',
+        'question_text',
         'date_updated',
         'difficulty'
     ]

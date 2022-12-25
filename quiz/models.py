@@ -15,7 +15,7 @@ class Quizzes(models.Model):
         verbose_name_plural = _("Quizzes")
         ordering = ['id']
 
-    category = models.ForeignKey(Category, default=1, on_delete=models.PROTECT)
+    category = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
     
     title = models.CharField(max_length=255, default=_("New Quiz"), verbose_name=_("Quiz Title"))
     
@@ -50,11 +50,13 @@ class Question(Updated):
     )
     
     
-    quiz = models.ForeignKey(Quizzes, related_name='question', on_delete=models.PROTECT)
+    quiz = models.ForeignKey(Quizzes, related_name='question', on_delete=models.CASCADE)
     
     technique = models.IntegerField(choices=TYPE, default=0, verbose_name=_("Type of question"))
     
     title = models.CharField(max_length=255, verbose_name=_("Title"))
+    
+    question_text = models.TextField(default='', verbose_name=_("Question Text"))
     
     difficulty = models.IntegerField(choices=SCALE, default=1, verbose_name=_("Difficulty"))
     
@@ -72,7 +74,7 @@ class Answer(Updated):
         verbose_name_plural = _("Answers")
         ordering = ['id']
     
-    question = models.ForeignKey(Question, related_name='answer', on_delete=models.PROTECT)
+    question = models.ForeignKey(Question, related_name='answer', on_delete=models.CASCADE)
     
     answer_text = models.CharField(max_length=255, verbose_name=_("Answer Text"))
     

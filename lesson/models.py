@@ -44,7 +44,7 @@ class Lesson(models.Model):
     
     lesson_title = models.CharField(max_length=255, blank=False, null=False, verbose_name=_("Lesson Title"))
     
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name=_("Lesson Category"))
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name=_("Lesson Category"))
     
     difficulty = models.IntegerField(choices=SCALE, default=1, verbose_name=_("Difficulty"))
     
@@ -63,7 +63,7 @@ class Content(models.Model):
         ordering = ['id']
             
         
-    related_lesson = models.ForeignKey(Lesson, on_delete=models.PROTECT, verbose_name=_("Related Lesson"))
+    related_lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, verbose_name=_("Related Lesson"))
         
     video_url = models.URLField(max_length=512, verbose_name=_("Video URL"))
         
