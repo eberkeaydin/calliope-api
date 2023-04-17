@@ -13,9 +13,9 @@
 #### Pcnizde Python ve pip kurulumları var ise proje dizininde terminal üzerinden önce :
 #### `py -m pip install --user virtualenv` ardından
 #### `py -m venv env` komutları calıstırılarak sanal Python ortamları oluşturulur.
-#### `.\env\Scripts\activate` komutu ile ortam aktifleştirilir.(Mac için `source venv/bin/activate`) Terminal kapatılıp bir daha açılır.
+#### `.\env\Scripts\Activate.ps1` komutu ile ortam aktifleştirilir.(Mac için `source venv/bin/activate`) Terminal kapatılıp bir daha açılır.
 #### Proje dizininde terminal üzerinden bu kez `pip install django` komutu ile Django indirilir 
-#### Proje dizininde `pip install -r requirements.txt` komutu ile proje bağımlılıkları indirilir.
+#### Proje dizininde `pip install django-cors-headers` komutu ile proje bağımlılıkları indirilir.
 #### Proje dizininde `py manage.py runserver` komutu calıstırılır(Mac için `python manage.py runserver`) ve proje lokal hostta canlıya alınmıs olur.
 #### lokal hostte /quiz URL'ine girip son gelişmeleri; /admin URL girip database gelismelerini kontrol edebilirsiniz.
 
