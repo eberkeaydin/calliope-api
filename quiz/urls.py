@@ -1,4 +1,7 @@
+# Django
 from django.urls import path
+
+# Calliope | Quiz
 from .views import Quiz, QuizQuestion
 
 app_name = 'quiz'

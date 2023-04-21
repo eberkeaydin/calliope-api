@@ -1,8 +1,12 @@
+# Django
 from rest_framework import serializers
-from .models import Category, Lesson, Content
+
+# Calliope | Lesson
+from .models import Category, Lesson, Conference, Content
+
 
 class CategorySerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = Category
         fields = [
@@ -10,14 +14,14 @@ class CategorySerializer(serializers.ModelSerializer):
             'category_name'
         ]
 
+
 class LessonSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
-        
+
         model = Lesson
-        
         category = CategorySerializer(many=True, read_only=True)
-        
+
         fields = [
             'id',
             'lesson_title',
@@ -27,18 +31,33 @@ class LessonSerializer(serializers.ModelSerializer):
             'is_active'
         ]
 
+
 class ContentSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
-        
+
         model = Content
-        
         related_lesson = LessonSerializer(many=True, read_only=True)
-        
+
         fields = [
             'id',
             'related_lesson',
             'video_url',
             'content_header',
             'content_text'
+        ]
+
+
+class ConferenceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model = Conference
+        related_lesson = LessonSerializer(many=True, read_only=True)
+
+        fields = [
+            'id',
+            'conference_topic',
+            'conference_url',
+            'related_lesson',
         ]

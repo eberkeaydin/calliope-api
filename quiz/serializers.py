@@ -1,8 +1,12 @@
+# Django Rest Framework
 from rest_framework import serializers
+
+# Calliope | Quiz
 from .models import Quizzes, Question, Answer
 
+
 class QuizSerializer(serializers.ModelSerializer):
-    
+
     class Meta: 
         model = Quizzes
         fields = [
@@ -11,11 +15,12 @@ class QuizSerializer(serializers.ModelSerializer):
             'title',
             'date_created'
         ]
-        
+
+
 class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
-        
+
         model = Answer
         fields = [
             'id',
@@ -30,7 +35,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     quiz = QuizSerializer(read_only=True)
 
     class Meta:
-    
+
         model = Question
         fields = [
             'id',
