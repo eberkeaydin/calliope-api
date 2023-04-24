@@ -77,12 +77,12 @@ class ConferenceView(APIView):
 
     def post(self, request):
         creds = self.get_credentials()
-        event_summary = 'Sample Google Meet Event'
+        event_summary = request.data['conference_topic']
         start_time = datetime.now() + timedelta(hours=1)
         end_time = start_time + timedelta(minutes=30)
-        timezone = 'America/Los_Angeles'
+        meet_timezone = 'Europe/Istanbul'
 
-        created_event = self.create_google_meet_event(creds, event_summary, start_time, end_time, timezone)
+        created_event = self.create_google_meet_event(creds, event_summary, start_time, end_time, meet_timezone)
 
         google_meet_link = created_event['hangoutLink']
         print("Google Meet Link:", google_meet_link)
@@ -117,18 +117,18 @@ class ConferenceView(APIView):
 
         return creds
 
-    def create_google_meet_event(self, credentials, summary, start_time, end_time, timezone):
+    def create_google_meet_event(self, credentials, summary, start_time, end_time, meet_timezone):
         service = build('calendar', 'v3', credentials=credentials)
 
         event = {
             'summary': summary,
             'start': {
                 'dateTime': start_time.isoformat(),
-                'timeZone': timezone,
+                'timeZone': meet_timezone,
             },
             'end': {
                 'dateTime': end_time.isoformat(),
-                'timeZone': timezone,
+                'timeZone': meet_timezone,
             },
             'conferenceData': {
                 'createRequest': {

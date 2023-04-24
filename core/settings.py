@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'quiz',
     'lesson',
     'rest_framework',
+    'user',
     'corsheaders'
 ]
 

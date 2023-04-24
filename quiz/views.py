@@ -17,6 +17,6 @@ class Quiz(generics.ListAPIView):
 class QuizQuestion(APIView):
 
     def get(self, request, **kwargs):
-        question = Question.objects.filter(quiz__title=kwargs['topic'])
+        question = Question.objects.filter(quiz__id=kwargs['quiz_id'])
         serializer = QuestionSerializer(question, many=True)
         return Response(serializer.data)
