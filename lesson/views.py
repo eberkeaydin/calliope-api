@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # Google
+import google
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -99,6 +100,24 @@ class ConferenceView(APIView):
             return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
     # Video Conferencing
+    # def get_credentials(self):
+    #     creds = None
+
+    #     if os.path.exists('token.json'):
+    #         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+
+    #     if not creds or not creds.valid:
+    #         if creds and creds.expired and creds.refresh_token:
+    #             creds.refresh(Request())
+    #         else:
+    #             flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+    #             creds = flow.run_local_server(port=0)
+
+    #         with open('token.json', 'w') as token:
+    #             token.write(creds.to_json())
+
+    #     return creds
+
     def get_credentials(self):
         creds = None
 
@@ -107,7 +126,12 @@ class ConferenceView(APIView):
 
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
-                creds.refresh(Request())
+                try:
+                    creds.refresh(Request())
+                except google.auth.exceptions.RefreshError as e:
+                    # Handle token refresh error and reauthorize
+                    flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+                    creds = flow.run_local_server(port=0)
             else:
                 flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
                 creds = flow.run_local_server(port=0)
@@ -117,6 +141,7 @@ class ConferenceView(APIView):
 
         return creds
 
+    
     def create_google_meet_event(self, credentials, summary, start_time, end_time, meet_timezone):
         service = build('calendar', 'v3', credentials=credentials)
 
