@@ -2,7 +2,7 @@
 from django.urls import path
 
 # Calliope | Lesson 
-from .views import CategoryView, CategorySingularView, LessonView, LessonSingularView, ContentView, ContentSingularView, ConferenceView
+from .views import CategoryView, CategorySingularView, LessonView, LessonSingularView, ContentView, ContentSingularView, ConferenceView, ConferenceSingularView
 
 app_name = 'lesson'
 
@@ -13,5 +13,6 @@ urlpatterns = [
     path('lesson/l/<str:id>/', LessonSingularView.as_view(), name='single-lesson'),
     path('content/', ContentView.as_view(), name='content'),
     path('content/c/<str:id>/', ContentSingularView.as_view(), name='single-content'),
-    path('conference/', ConferenceView.as_view(), name='conference')
+    path('conference/', ConferenceView.as_view(), name='conference'),
+    path('conference/c/<str:id>/', ConferenceSingularView.as_view(), name='single-conference')
 ]

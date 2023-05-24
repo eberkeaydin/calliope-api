@@ -169,3 +169,11 @@ class ConferenceView(APIView):
         created_event = service.events().insert(calendarId='primary', body=event, conferenceDataVersion=1).execute()
 
         return created_event
+
+
+class ConferenceSingularView(APIView):
+
+    def get(self, request, **kwargs):        
+        category = Conference.objects.filter(id=kwargs['id'])
+        serializer = ConferenceSerializer(category, many=True)
+        return Response(serializer.data)
