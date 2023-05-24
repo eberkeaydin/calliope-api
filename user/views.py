@@ -1,8 +1,13 @@
 # Django Rest Framework  
-from rest_framework import generics
-from rest_framework import status
-from rest_framework.views import APIView  
+from rest_framework import (
+    generics, 
+    status, 
+    viewsets,
+    request
+)
+from rest_framework.views import APIView
 from rest_framework.response import Response  
+from rest_framework.generics import UpdateAPIView 
 
 # Calliope | User
 from .models import User
@@ -27,15 +32,22 @@ class UserView(generics.ListAPIView):
 
 class UserSingularView(APIView):
 
-    def get(self, request, **kwargs):
+    def get(self, request, **kwargs):        
         user = User.objects.filter(id=kwargs['id'])
         serializer = UserSerializer(user, many=True)
         return Response(serializer.data)
 
-    def update(self, request, role, score):
+class UserUpdateView(UpdateAPIView):
+
+    def put(self, request, *args, **kwargs):
         data = request.data.copy()
-        data['role'] = role
-        data['score'] = score
+        user_object = User.objects.get(id=data['id'])
+
+        user_object.id = data['id']
+        user_object.user_name = data['user_name']
+        user_object.role = data['role']
+        user_object.score = data['score'] 
+        user_object.save()
 
         serializer = UserSerializer(data=data, partial=True)
 
@@ -43,4 +55,4 @@ class UserSingularView(APIView):
             serializer.save()
             return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
         else:
-            return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"status": "success", "data": serializer.data}, status=status.HTTP_204_NO_CONTENT)

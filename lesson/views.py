@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 # Django Rest Framework  
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, generics
 
 # Google
 import google
@@ -21,7 +21,7 @@ from .serializers import CategorySerializer, LessonSerializer, ConferenceSeriali
 SCOPES = ['https://www.googleapis.com/auth/calendar.events']
 
 
-class CategoryView(APIView):
+class CategoryView(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         result = Category.objects.all()
@@ -37,7 +37,15 @@ class CategoryView(APIView):
             return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
-class LessonView(APIView):
+class CategorySingularView(APIView):
+
+    def get(self, request, **kwargs):        
+        category = Category.objects.filter(id=kwargs['id'])
+        serializer = CategorySerializer(category, many=True)
+        return Response(serializer.data)
+
+
+class LessonView(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         result = Lesson.objects.all()
@@ -53,7 +61,15 @@ class LessonView(APIView):
             return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ContentView(APIView):
+class LessonSingularView(APIView):
+
+    def get(self, request, **kwargs):        
+        category = Lesson.objects.filter(id=kwargs['id'])
+        serializer = LessonSerializer(category, many=True)
+        return Response(serializer.data)
+
+
+class ContentView(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         result = Content.objects.all()
@@ -67,6 +83,14 @@ class ContentView(APIView):
             return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
         else:
             return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ContentSingularView(APIView):
+
+    def get(self, request, **kwargs):        
+        category = Content.objects.filter(id=kwargs['id'])
+        serializer = ContentSerializer(category, many=True)
+        return Response(serializer.data)
 
 
 class ConferenceView(APIView):

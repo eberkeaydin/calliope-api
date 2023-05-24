@@ -2,13 +2,16 @@
 from django.urls import path
 
 # Calliope | Lesson 
-from .views import CategoryView, LessonView, ContentView, ConferenceView
+from .views import CategoryView, CategorySingularView, LessonView, LessonSingularView, ContentView, ContentSingularView, ConferenceView
 
 app_name = 'lesson'
 
 urlpatterns = [
     path('category/', CategoryView.as_view(), name='category'),
+    path('category/c/<str:id>/', CategorySingularView.as_view(), name='single-category'),
     path('lesson/', LessonView.as_view(), name='lesson'),
+    path('lesson/l/<str:id>/', LessonSingularView.as_view(), name='single-lesson'),
     path('content/', ContentView.as_view(), name='content'),
+    path('content/c/<str:id>/', ContentSingularView.as_view(), name='single-content'),
     path('conference/', ConferenceView.as_view(), name='conference')
 ]
