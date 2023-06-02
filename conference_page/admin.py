@@ -9,8 +9,25 @@ from . import models
 class ConferencePageAdmin(admin.ModelAdmin):
 
     list_display = [
-        'related_conference',
         'code_editor_url',
+        'directive_header',
         'directive_text',
         'is_active'
+    ]
+
+
+@admin.register(models.SurveyQuestion)
+class SurveyAdmin(admin.ModelAdmin):
+
+    list_display = [
+        'survey_question',
+    ]
+
+
+@admin.register(models.SurveyAnswer)
+class SurveyAnswerAdmin(admin.ModelAdmin):
+
+    list_display = [
+        'related_survey',
+        'survey_answer'
     ]
