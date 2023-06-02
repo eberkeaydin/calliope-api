@@ -49,7 +49,6 @@ class SurveyAnswerCreateView(generics.CreateAPIView):
         data = request.data.copy()
         survey_answer_object = ConferencePage.objects.create()
 
-        survey_answer_object.id = data['id']
         survey_answer_object.related_survey = data['related_survey']
         survey_answer_object.survey_answer = data['survey_answer'] 
         survey_answer_object.save()

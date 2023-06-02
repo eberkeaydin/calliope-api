@@ -22,12 +22,17 @@ class ConferencePage(models.Model):
 
 class SurveyQuestion(models.Model):
 
+    SURVEY_ROLES = (
+        (0, _('Learner')),
+        (1, _('Tutor')),
+    )
 
     class Meta:
         verbose_name = _("Survey")
         verbose_name_plural = _("Surveys")
         ordering = ['id']
 
+    survey_role = models.IntegerField(choices=SURVEY_ROLES, default=0, verbose_name=("Survey Role"))
     survey_question = models.CharField(max_length=512, verbose_name=("Survey Question"))
     is_active = models.BooleanField(default=True, verbose_name=_("Active Status"))
 

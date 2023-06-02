@@ -21,6 +21,7 @@ class SurveyAdmin(admin.ModelAdmin):
 
     list_display = [
         'survey_question',
+        'survey_role'
     ]
 
 

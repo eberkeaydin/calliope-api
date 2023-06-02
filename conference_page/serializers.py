@@ -43,5 +43,6 @@ class SurveyQuestionSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'survey_question',
+            'survey_role',
             'is_active'
         ]
