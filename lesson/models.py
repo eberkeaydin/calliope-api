@@ -37,8 +37,8 @@ class Lesson(models.Model):
 class Content(models.Model):
 
     class Meta:
-        verbose_name = _("Content")
-        verbose_name_plural = _("Contents")
+        verbose_name = "Content" # "Content"
+        verbose_name_plural = "Contents"
         ordering = ['id']
 
     related_lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, verbose_name=_("Related Lesson"))
