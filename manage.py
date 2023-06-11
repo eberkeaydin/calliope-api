@@ -9,7 +9,8 @@ def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
     
     try:
-        from django.core.management.commands.runserver import Command as runserver
+        from django.core.management.commands.runserver import \
+            Command as runserver
         runserver.default_addr = '0.0.0.0'
         runserver.default_port = '8080'
     except ImportError:

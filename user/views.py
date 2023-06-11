@@ -1,13 +1,8 @@
 # Django Rest Framework  
-from rest_framework import (
-    generics, 
-    status, 
-    viewsets,
-    request
-)
+from rest_framework import generics, request, status, viewsets
+from rest_framework.generics import UpdateAPIView
+from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.response import Response  
-from rest_framework.generics import UpdateAPIView 
 
 # Calliope | User
 from .models import User

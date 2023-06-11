@@ -1,22 +1,12 @@
 # Django Rest Framework  
-from rest_framework import (
-    generics, 
-    status
-)
+from rest_framework import generics, status
+from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.response import Response  
 
 # Calliope | ConferencePage
-from .models import (
-    ConferencePage,
-    SurveyQuestion,
-    SurveyAnswer
-)
-from .serializers import (
-    ConferencePageSerializer,
-    SurveyQuestionSerializer,
-    SurveyAnswerSerializer
-)
+from .models import ConferencePage, SurveyAnswer, SurveyQuestion
+from .serializers import (ConferencePageSerializer, SurveyAnswerSerializer,
+                          SurveyQuestionSerializer)
 
 
 class SurveyView(generics.ListAPIView):

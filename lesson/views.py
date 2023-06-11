@@ -2,21 +2,21 @@
 import os
 from datetime import datetime, timedelta
 
-# Django Rest Framework  
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status, generics
-
 # Google
 import google
-from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from rest_framework import generics, status
+from rest_framework.response import Response
+# Django Rest Framework  
+from rest_framework.views import APIView
 
 # Calliope | Lesson
-from .models import Category, Lesson, Conference, Content
-from .serializers import CategorySerializer, LessonSerializer, ConferenceSerializer, ContentSerializer
+from .models import Category, Conference, Content, Lesson
+from .serializers import (CategorySerializer, ConferenceSerializer,
+                          ContentSerializer, LessonSerializer)
 
 SCOPES = ['https://www.googleapis.com/auth/calendar.events']
 

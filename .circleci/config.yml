@@ -13,10 +13,6 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
       - run:
-          name: Test code quality
-          command: |
-            make format
-      - run:
           name: Run tests
           command: |
             mkdir test-results

@@ -2,7 +2,8 @@
 from django.contrib import admin
 
 # Calliope | Lesson
-from .models import Category, Lesson, Content, Conference
+from .models import Category, Conference, Content, Lesson
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

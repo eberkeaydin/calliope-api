@@ -1,5 +1,6 @@
 import requests
 
+
 def test_quiz_url():
     response = requests.get("http://localhost:8080/quiz")
     assert response.status_code == 200

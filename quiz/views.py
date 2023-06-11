@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Calliope | Quiz
-from .models import Quizzes, Question
-from .serializers import QuizSerializer, QuestionSerializer
+from .models import Question, Quizzes
+from .serializers import QuestionSerializer, QuizSerializer
 
 
 class Quiz(generics.ListAPIView):

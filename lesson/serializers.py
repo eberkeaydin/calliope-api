@@ -2,7 +2,7 @@
 from rest_framework import serializers
 
 # Calliope | Lesson
-from .models import Category, Lesson, Conference, Content
+from .models import Category, Conference, Content, Lesson
 
 
 class CategorySerializer(serializers.ModelSerializer):

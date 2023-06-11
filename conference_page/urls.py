@@ -2,14 +2,9 @@
 from django.urls import path
 
 # Calliope | ConferencePage
-from .views import (
-    ConferencePageView, 
-    ConferencePageSingularView, 
-    SurveyView, 
-    SurveySingularView,
-    SurveyAnswerView,
-    SurveyAnswerCreateView
-)
+from .views import (ConferencePageSingularView, ConferencePageView,
+                    SurveyAnswerCreateView, SurveyAnswerView,
+                    SurveySingularView, SurveyView)
 
 app_name = 'user'
 

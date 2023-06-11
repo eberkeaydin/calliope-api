@@ -2,7 +2,7 @@
 from django.urls import path
 
 # Calliope | Quiz
-from .views import UserView, UserSingularView, UserUpdateView
+from .views import UserSingularView, UserUpdateView, UserView
 
 app_name = 'user'
 

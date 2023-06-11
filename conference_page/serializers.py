@@ -2,11 +2,7 @@
 from rest_framework import serializers
 
 # Calliope | ConferencePage
-from .models import (
-    ConferencePage,
-    SurveyQuestion,
-    SurveyAnswer
-)
+from .models import ConferencePage, SurveyAnswer, SurveyQuestion
 
 
 class ConferencePageSerializer(serializers.ModelSerializer):

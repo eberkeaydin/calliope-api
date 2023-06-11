@@ -2,7 +2,9 @@
 from django.urls import path
 
 # Calliope | Lesson 
-from .views import CategoryView, CategorySingularView, LessonView, LessonSingularView, ContentView, ContentSingularView, ConferenceView, ConferenceSingularView
+from .views import (CategorySingularView, CategoryView, ConferenceSingularView,
+                    ConferenceView, ContentSingularView, ContentView,
+                    LessonSingularView, LessonView)
 
 app_name = 'lesson'
 

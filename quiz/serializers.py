@@ -2,7 +2,7 @@
 from rest_framework import serializers
 
 # Calliope | Quiz
-from .models import Quizzes, Question, Answer
+from .models import Answer, Question, Quizzes
 
 
 class QuizSerializer(serializers.ModelSerializer):
