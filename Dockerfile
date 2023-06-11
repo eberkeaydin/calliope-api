@@ -11,4 +11,4 @@ ENV PYTHONDONTWRITEBYTECODE=1
 RUN python -m pip install --upgrade pip
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-ENTRYPOINT ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
