@@ -21,20 +21,30 @@ from .serializers import (CategorySerializer, ConferenceSerializer,
 SCOPES = ['https://www.googleapis.com/auth/calendar.events']
 
 
+# class CategoryView(generics.ListAPIView):
+
+#     def get(self, request, *args, **kwargs):
+#         result = Category.objects.all()
+#         serializers = CategorySerializer(result, many=True)
+#         return Response({'status': 'success', "categories":serializers.data}, status=200)
+
+#     def post(self, request):
+#         serializer = CategorySerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+#         else:
+#             return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
 class CategoryView(generics.ListAPIView):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
 
     def get(self, request, *args, **kwargs):
-        result = Category.objects.all()
-        serializers = CategorySerializer(result, many=True)
-        return Response({'status': 'success', "categories":serializers.data}, status=200)
+        return self.list(request, *args, **kwargs)
 
-    def post(self, request):
-        serializer = CategorySerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
-        else:
-            return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 
 class CategorySingularView(APIView):
@@ -46,19 +56,14 @@ class CategorySingularView(APIView):
 
 
 class LessonView(generics.ListAPIView):
+    serializer_class = LessonSerializer
+    queryset = Lesson.objects.all()
 
     def get(self, request, *args, **kwargs):
-        result = Lesson.objects.all()
-        serializers = LessonSerializer(result, many=True)
-        return Response({'status': 'success', "lessons":serializers.data}, status=200)
+        return self.list(request, *args, **kwargs)
 
-    def post(self, request):
-        serializer = LessonSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
-        else:
-            return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 
 class LessonSingularView(APIView):
@@ -70,19 +75,14 @@ class LessonSingularView(APIView):
 
 
 class ContentView(generics.ListAPIView):
+    serializer_class = ContentSerializer
+    queryset = Content.objects.all()
 
     def get(self, request, *args, **kwargs):
-        result = Content.objects.all()
-        serializers = ContentSerializer(result, many=True)
-        return Response({'status': 'success', "contents":serializers.data}, status=200)
+        return self.list(request, *args, **kwargs)
 
-    def post(self, request):
-        serializer = ContentSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
-        else:
-            return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 
 class ContentSingularView(APIView):

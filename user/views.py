@@ -10,19 +10,14 @@ from .serializers import UserSerializer
 
 
 class UserView(generics.ListAPIView):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
 
     def get(self, request, *args, **kwargs):
-        result = User.objects.all()
-        serializers = UserSerializer(result, many=True)
-        return Response({'status': 'success', "categories":serializers.data}, status=200)
+        return self.list(request, *args, **kwargs)
 
-    def post(self, request):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
-        else:
-            return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 
 class UserSingularView(APIView):
