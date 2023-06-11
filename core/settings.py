@@ -103,7 +103,7 @@ DATABASES = {
         'NAME': 'calliope-db',
         'USER': 'root',
         'PASSWORD': 'eba.cerkez7742',
-        'HOST': '34.29.71.130',
+        'HOST': 'rock-palisade-384010:us-central1:berke7742',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
