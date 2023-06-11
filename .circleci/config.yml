@@ -37,7 +37,7 @@ jobs:
             echo 'export TAG=${CIRCLE_SHA1}' >> $BASH_ENV
             echo 'export IMAGE_NAME=$CIRCLE_PROJECT_REPONAME' >> $BASH_ENV
             echo 'export JSON_FILE_INFO=$JSON_FILE_INFO' >> $BASH_ENV
-            sh-c env
+            sh -c env
             docker build -t us.gcr.io/$GOOGLE_PROJECT_ID/$IMAGE_NAME -t us.gcr.io/$GOOGLE_PROJECT_ID/$IMAGE_NAME:$TAG .
       - gcp-cli/install:
             version: 404.0.0 # optionally pass in the GCP CLI version
