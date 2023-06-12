@@ -66,6 +66,10 @@ CORS_ORIGIN_WHITELIST = [
     'https://calliope-api-g72rpkruuq-uc.a.run.app',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'calliope-api-g72rpkruuq-uc.a.run.app'
+]
+
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
