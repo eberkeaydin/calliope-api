@@ -45,5 +45,6 @@ class LessonAdmin(admin.ModelAdmin):
         'id',
         'conference_topic',
         'related_lesson',
-        'conference_url'
+        'conference_url',
+        'is_active'
     ]

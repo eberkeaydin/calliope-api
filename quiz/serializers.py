@@ -13,6 +13,7 @@ class QuizSerializer(serializers.ModelSerializer):
             'id',
             'category',
             'title',
+            'related_lesson',
             'date_created'
         ]
 

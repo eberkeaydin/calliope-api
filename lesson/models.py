@@ -60,6 +60,7 @@ class Conference(models.Model):
     conference_topic = models.CharField(max_length=255, verbose_name=_("Conference Topic"))
     related_lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, verbose_name=_("Related Lesson"))
     conference_url = models.URLField(max_length=512, verbose_name=_("Conference URL"))
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.conference_topic

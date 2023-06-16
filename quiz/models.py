@@ -2,6 +2,9 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+# Calliope | Lesson
+from lesson.models import Lesson
+
 
 class Category(models.Model):
 
@@ -19,6 +22,7 @@ class Quizzes(models.Model):
         ordering = ['id']
 
     category = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
+    related_lesson = models.ForeignKey(Lesson, null=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, default=_("New Quiz"), verbose_name=_("Quiz Title"))
     date_created = models.DateTimeField(auto_now_add=True)
 

@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -64,10 +63,6 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'https://calliope-api-g72rpkruuq-uc.a.run.app',
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    'calliope-api-g72rpkruuq-uc.a.run.app'
 ]
 
 ROOT_URLCONF = 'core.urls'

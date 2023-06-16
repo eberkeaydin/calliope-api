@@ -60,4 +60,5 @@ class ConferenceSerializer(serializers.ModelSerializer):
             'conference_topic',
             'conference_url',
             'related_lesson',
+            'is_active'
         ]
