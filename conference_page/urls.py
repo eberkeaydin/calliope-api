@@ -2,9 +2,14 @@
 from django.urls import path
 
 # Calliope | ConferencePage
-from .views import (ConferencePageSingularView, ConferencePageView,
-                    SurveyAnswerView,
-                    SurveySingularView, SurveyView)
+from .views import (
+    ConferencePageSingularView,               
+    ConferencePageView,
+    SurveyAnswerView,
+    SurveyAnswerCreateView,
+    SurveySingularView, 
+    SurveyView
+)
 
 app_name = 'user'
 
@@ -14,5 +19,5 @@ urlpatterns = [
     path('surveys/', SurveyView.as_view(), name='surveys'),
     path('surveys/s/<str:id>/', SurveySingularView.as_view(), name='single-survey'),
     path('surveys/answers/', SurveyAnswerView.as_view(), name='surveys-answers'),
-    #path('surveys/answers/create/', SurveyAnswerCreateView.as_view(), name='surveys-answers'),
+    path('surveys/answers/create/', SurveyAnswerCreateView.as_view(), name='surveys-answers'),
 ]

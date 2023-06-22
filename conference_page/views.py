@@ -42,23 +42,23 @@ class SurveyAnswerView(generics.ListAPIView):
         return self.create(request, *args, **kwargs)
 
 
-# class SurveyAnswerCreateView(generics.CreateAPIView):
+class SurveyAnswerCreateView(generics.CreateAPIView):
 
-#     def post(self, request, *args, **kwargs):
-#         data = request.data.copy()
-#         survey_answer_object = ConferencePage.objects.create()
+    def post(self, request, *args, **kwargs):
+        data = request.data.copy()
+        survey_answer_object = ConferencePage.objects.create()
 
-#         survey_answer_object.related_survey = data['related_survey']
-#         survey_answer_object.survey_answer = data['survey_answer'] 
-#         survey_answer_object.save()
+        survey_answer_object.related_survey = data['related_survey']
+        survey_answer_object.survey_answer = data['survey_answer'] 
+        survey_answer_object.save()
 
-#         serializer = SurveyAnswerSerializer(data=data, partial=True)
+        serializer = SurveyAnswerSerializer(data=data, partial=True)
 
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
-#         else:
-#             return Response({"status": "success", "data": serializer.data}, status=status.HTTP_204_NO_CONTENT)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+        else:
+            return Response({"status": "success", "data": serializer.data}, status=status.HTTP_204_NO_CONTENT)
 
 
 class ConferencePageView(generics.ListAPIView):
